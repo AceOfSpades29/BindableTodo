@@ -7,6 +7,8 @@
         <Entry Text="{Binding Notes}" />
         <Label Text="Done" />
         <Switch IsToggled="{Binding Done}" />
+        <Label Text="Due Date"/>
+        <DatePicker Date="{Binding DueDate}"></DatePicker>
         <Button Text="Save" Clicked="OnSaveClicked" />
         <Button Text="Delete" Clicked="OnDeleteClicked" />
         <Button Text="Cancel" Clicked="OnCancelClicked" />

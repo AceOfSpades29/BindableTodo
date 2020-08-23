@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Todo.TodoListPage" Title="Todo">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Todo.TodoListPage" 
+    Title="Todo"
+    >
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" Clicked="OnItemAdded">
             <ToolbarItem.IconImageSource>
@@ -13,9 +18,12 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-                        <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
+                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                            <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
+                        </StackLayout>
+                        <DatePicker Margin="20,-10,0,20" Date="{Binding DueDate}" IsEnabled="False" VerticalOptions="End" Width="100" FontSize="Micro"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
