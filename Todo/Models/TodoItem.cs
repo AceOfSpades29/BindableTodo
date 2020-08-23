@@ -10,7 +10,7 @@ namespace Todo
         public string Name { get; set; }
         public string Notes { get; set; }
         public bool Done { get; set; }
-        public DateTime DueDate { get; set; }
+        public DateTime DueDate { get; set; } = DateTime.Now;
     }
 }
 
