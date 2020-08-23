@@ -2,6 +2,7 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:converters="clr-namespace:Todo.Converters;assembly=Todo"
     x:Class="Todo.TodoListPage" 
     Title="Todo"
     >
@@ -14,16 +15,24 @@
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView" Margin="20" ItemSelected="OnListItemSelected">
+    <ListView x:Name="listView" Margin="5" ItemSelected="OnListItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
-                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <StackLayout.BackgroundColor>
+                            <Binding Path="Done">
+                                <Binding.Converter>
+                                    <converters:BoolBackgroundColorConverter TrueValue="#D3D3D3D3" FalseValue="#FFFFFF"></converters:BoolBackgroundColorConverter>
+                                </Binding.Converter>
+                            </Binding>
+                        </StackLayout.BackgroundColor>
+                        <StackLayout Margin="0,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                          
                             <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
                             <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
                         </StackLayout>
-                        <DatePicker Margin="20,-10,0,20" Date="{Binding DueDate}" IsEnabled="False" VerticalOptions="End" Width="100" FontSize="Micro"/>
+                        <DatePicker Margin="0,-10,0,20" Date="{Binding Path=DueDate}" IsEnabled="False" VerticalOptions="End" FontSize="Micro" />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
